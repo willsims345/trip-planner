@@ -108,6 +108,10 @@ class _CalDayState extends State<CalDay> {
               });
             },
             controlAffinity: ListTileControlAffinity.leading,
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            child: const Text('Add stay information'),
           )
         ],
       ),
