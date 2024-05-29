@@ -41,6 +41,5 @@ class Stay {
   String? bookedThrough;
   String? bookedBy;
   String? location;
-  
 
 }
