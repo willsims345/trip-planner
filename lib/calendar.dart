@@ -110,9 +110,35 @@ class _CalDayState extends State<CalDay> {
             controlAffinity: ListTileControlAffinity.leading,
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              showDialog(context: context, builder: (BuildContext context) {
+                return StayEntry();
+              });
+            },
             child: const Text('Add stay information'),
           )
+        ],
+      ),
+    );
+  }
+}
+
+class StayEntry extends StatefulWidget {
+  const StayEntry({super.key});
+
+  @override
+  State<StayEntry> createState() => _StayEntryState();
+}
+
+class _StayEntryState extends State<StayEntry> {
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text('Input stay information'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text('add location')
         ],
       ),
     );
