@@ -43,7 +43,7 @@ class _CalendarState extends State<Calendar> {
       appBar: AppBar(
         title: const Text('Tripr'),
       ),
-            body: dateRange == null
+      body: dateRange == null
           ? const Center(child: CircularProgressIndicator())
           : Padding(
               padding: const EdgeInsets.all(8.0),
@@ -64,12 +64,19 @@ class _CalendarState extends State<Calendar> {
   }
 }
 
-class CalDay extends StatelessWidget {
+class CalDay extends StatefulWidget {
   CalDay(this.date, {super.key})
       : dateString = DateFormat('dd/MM/yyyy').format(date);
 
   final DateTime date;
   final String dateString;
+
+  @override
+  State<CalDay> createState() => _CalDayState();
+}
+
+class _CalDayState extends State<CalDay> {
+  bool isTravelDay = false;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +91,7 @@ class CalDay extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              dateString,
+              widget.dateString,
               style: const TextStyle(
                 fontSize: 16.0,
                 fontWeight: FontWeight.bold,
@@ -92,6 +99,16 @@ class CalDay extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
+          CheckboxListTile(
+            title: const Text("Is a travel day"),
+            value: isTravelDay,
+            onChanged: (bool? value) {
+              setState(() {
+                isTravelDay = value ?? false;
+              });
+            },
+            controlAffinity: ListTileControlAffinity.leading,
+          )
         ],
       ),
     );
