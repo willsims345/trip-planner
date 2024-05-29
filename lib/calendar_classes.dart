@@ -31,6 +31,8 @@ class Travel {
   int? transfers;
   String? bookedBy;
 
+  String? test;
+
 }
 
 class Stay {
