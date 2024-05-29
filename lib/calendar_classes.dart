@@ -1,6 +1,10 @@
-class Day {
-  Day();
+import 'package:intl/intl.dart';
 
+class Day {
+  Day(this.date) : dateString = DateFormat('dd/MM/yyyy').format(date);
+
+  DateTime date;
+  String dateString;
   bool? isTravelDay;
   Travel? travel;
   Stay? stay;
@@ -15,6 +19,10 @@ class Day {
       title = 'Stay in ${stay!.location} at ${stay!.name}';
       return;
     }
+  }
+
+  String getDateString() {
+    return DateFormat('dd/MM/yyyy').format(date);
   }
 
 }

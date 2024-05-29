@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:trip_planner/calendar_classes.dart';
 
 class Calendar extends StatefulWidget {
   const Calendar(this.startDate, this.endDate, {super.key});
@@ -66,10 +66,11 @@ class _CalendarState extends State<Calendar> {
 
 class CalDay extends StatefulWidget {
   CalDay(this.date, {super.key})
-      : dateString = DateFormat('dd/MM/yyyy').format(date);
+      : day = Day(date);
 
   final DateTime date;
-  final String dateString;
+
+  final Day day;
 
   @override
   State<CalDay> createState() => _CalDayState();
@@ -91,7 +92,7 @@ class _CalDayState extends State<CalDay> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              widget.dateString,
+              widget.day.getDateString(),
               style: const TextStyle(
                 fontSize: 16.0,
                 fontWeight: FontWeight.bold,
